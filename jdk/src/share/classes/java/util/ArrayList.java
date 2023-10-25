@@ -222,13 +222,25 @@ public class ArrayList<E> extends AbstractList<E>
         }
     }
 
+    /**
+     * 计算容量
+     * @param elementData 实际保存数据的数组对象
+     * @param minCapacity 最小容量大小
+     * @return
+     */
     private static int calculateCapacity(Object[] elementData, int minCapacity) {
+        // 如果数组中还没有数据，容量就是初始值
         if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
             return Math.max(DEFAULT_CAPACITY, minCapacity);
         }
+        // 否则返回最小容量（实际是数据个数+1）
         return minCapacity;
     }
 
+    /**
+     * 确保内部容量
+     * @param minCapacity 最小容量
+     */
     private void ensureCapacityInternal(int minCapacity) {
         ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));
     }
@@ -455,7 +467,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
-     * Appends the specified element to the end of this list.
+     * 追加元素到list的末尾
      *
      * @param e element to be appended to this list
      * @return <tt>true</tt> (as specified by {@link Collection#add})
